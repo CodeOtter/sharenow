@@ -6,7 +6,7 @@ Securely share small files in CLI.
 ```
 apt-get update
 apt-get install curl openssl python
-sudo curl x > /usr/bin/sharenow
+sudo curl -o /usr/local/bin/sharenow https://raw.githubusercontent.com/CodeOtter/sharenow/master/sharenow && sudo chmod 755 /usr/local/bin/sharenow
 ```
 
 ## Usage
