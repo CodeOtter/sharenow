@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ $1 = "-d" ]; then
   curl -s -XGET http://hastebin.com/documents/$2 | python -c 'import json,sys;obj=json.load(sys.stdin);print "\n".join(obj["data"][pos:pos+64] for pos in xrange(0, len(obj["data"]), 64))' | openssl enc -d -aes-256-cbc -a | tar -xvzf -
-  echo -e "\033[1;33mFastpack complete!\033[0m"
+  echo -e "\033[1;Unpacking complete!\033[0m"
 else
   echo -e '\033[1;33m'
   tar -czf - $1 | openssl enc -salt -aes-256-cbc -a | curl -s -XPOST http://hastebin.com/documents -d @- | python -c 'import json,sys;obj=json.load(sys.stdin);print obj["key"]'
