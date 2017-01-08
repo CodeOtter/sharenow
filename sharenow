@@ -4,7 +4,7 @@ if [ $1 = "-d" ]; then
   echo -e "\033[1;Unpacking complete!\033[0m"
 else
   echo -e '\033[1;33m'
-  tar -czf - $1 | openssl enc -salt -aes-256-cbc -a | curl -s -XPOST http://hastebin.com/documents -d @- | python -c 'import json,sys;obj=json.load(sys.stdin);print obj["key"]'
+  tar -czf - $1 | openssl enc -salt -aes-256-cbc -a | curl -sk -XPOST https://hastebin.com/documents -d @- | python -c 'import json,sys;obj=json.load(sys.stdin);print obj["key"]'
   echo -e '\033[0m'
 fi
 
